@@ -65,6 +65,10 @@ on:
         required: false
         type: boolean
         default: true
+      do_not_generate_additional_host_names:
+        required: false
+        type: string
+        default: 'false'
     secrets:
       C2_KUBE_CONFIG:
         description: 'The kubctl config file with credentials to access the your kubernetes'
