@@ -16,7 +16,7 @@ jobs:
           image-names: "*"
           cut-off: A week ago UTC
           account-type: org
-          org-name: acdh-oeaw
+          org-name: acdh-atrium-research
           keep-at-least: 1
           untagged-only: true
           token: ${{ secrets.PAT }}
