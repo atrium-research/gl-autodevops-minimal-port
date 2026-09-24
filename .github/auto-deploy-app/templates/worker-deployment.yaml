@@ -14,6 +14,9 @@ items:
       {{- if $.Values.gitlab.env }}
       app.gitlab.com/env: {{ $.Values.gitlab.env | quote }}
       {{- end }}
+{{- with $deploymentAnnotationsConfig := default $.Values.deploymentAnnotations $workerConfig.deploymentAnnotations -}}
+{{- toYaml $deploymentAnnotationsConfig | nindent 6 }}
+{{- end }}
     labels:
       track: "{{ $.Values.application.track }}"
       tier: worker

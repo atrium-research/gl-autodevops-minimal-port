@@ -17,6 +17,7 @@ lifecycle: { }
 #   exec:
 #     command: ["/bin/sh", "-c", "sleep 10"]
 podAnnotations: { }
+deploymentAnnotations: { }
 nodeSelector: { }
 securityContext: { }
 containerSecurityContext: { }
@@ -267,6 +268,8 @@ workers: { }
   #     - dns2.DOMAIN2
   #   labels:
   #     worker-type: worker
+  #   deploymentAnnotations:
+  #     example.com/annotation: value
   #   command:
   #   - /bin/herokuish
   #   - procfile

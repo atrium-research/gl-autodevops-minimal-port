@@ -10,6 +10,9 @@ metadata:
     {{- if .Values.gitlab.env }}
     app.gitlab.com/env: {{ .Values.gitlab.env | quote }}
     {{- end }}
+{{- if .Values.deploymentAnnotations }}
+{{- toYaml .Values.deploymentAnnotations | nindent 4 }}
+{{- end }}
   labels:
     track: "{{ .Values.application.track }}"
     tier: "{{ .Values.application.tier }}"

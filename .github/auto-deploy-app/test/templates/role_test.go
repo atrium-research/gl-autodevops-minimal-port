@@ -9,8 +9,8 @@ import (
 	"github.com/gruntwork-io/terratest/modules/k8s"
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/stretchr/testify/require"
-	rbacV1 "k8s.io/api/rbac/v1"
 	coreV1 "k8s.io/api/core/v1"
+	rbacV1 "k8s.io/api/rbac/v1"
 )
 
 func TestRoleTemplate(t *testing.T) {
@@ -80,10 +80,10 @@ func TestRoleTemplate(t *testing.T) {
 		{
 			CaseName: "multiple roles with different rules",
 			Values: map[string]string{
-				"roles.pod-reader.rules[0].apiGroups[0]": "",
-				"roles.pod-reader.rules[0].resources[0]": "pods",
-				"roles.pod-reader.rules[0].verbs[0]":     "get",
-				"roles.pod-reader.rules[0].verbs[1]":     "list",
+				"roles.pod-reader.rules[0].apiGroups[0]":    "",
+				"roles.pod-reader.rules[0].resources[0]":    "pods",
+				"roles.pod-reader.rules[0].verbs[0]":        "get",
+				"roles.pod-reader.rules[0].verbs[1]":        "list",
 				"roles.secret-reader.rules[0].apiGroups[0]": "",
 				"roles.secret-reader.rules[0].resources[0]": "secrets",
 				"roles.secret-reader.rules[0].verbs[0]":     "get",
@@ -119,18 +119,18 @@ func TestRoleTemplate(t *testing.T) {
 		{
 			CaseName: "role with complex rules",
 			Values: map[string]string{
-				"roles.admin-role.rules[0].apiGroups[0]":    "apps",
-				"roles.admin-role.rules[0].resources[0]":    "deployments",
-				"roles.admin-role.rules[0].resources[1]":    "replicasets",
-				"roles.admin-role.rules[0].verbs[0]":        "get",
-				"roles.admin-role.rules[0].verbs[1]":        "list",
-				"roles.admin-role.rules[0].verbs[2]":        "create",
-				"roles.admin-role.rules[0].verbs[3]":        "update",
-				"roles.admin-role.rules[0].verbs[4]":        "delete",
-				"roles.admin-role.rules[1].apiGroups[0]":    "",
-				"roles.admin-role.rules[1].resources[0]":    "pods",
+				"roles.admin-role.rules[0].apiGroups[0]":     "apps",
+				"roles.admin-role.rules[0].resources[0]":     "deployments",
+				"roles.admin-role.rules[0].resources[1]":     "replicasets",
+				"roles.admin-role.rules[0].verbs[0]":         "get",
+				"roles.admin-role.rules[0].verbs[1]":         "list",
+				"roles.admin-role.rules[0].verbs[2]":         "create",
+				"roles.admin-role.rules[0].verbs[3]":         "update",
+				"roles.admin-role.rules[0].verbs[4]":         "delete",
+				"roles.admin-role.rules[1].apiGroups[0]":     "",
+				"roles.admin-role.rules[1].resources[0]":     "pods",
 				"roles.admin-role.rules[1].resourceNames[0]": "specific-pod",
-				"roles.admin-role.rules[1].verbs[0]":        "get",
+				"roles.admin-role.rules[1].verbs[0]":         "get",
 			},
 			ExpectedRoles: []struct {
 				Name        string

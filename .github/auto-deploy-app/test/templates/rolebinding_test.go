@@ -9,8 +9,8 @@ import (
 	"github.com/gruntwork-io/terratest/modules/k8s"
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/stretchr/testify/require"
-	rbacV1 "k8s.io/api/rbac/v1"
 	coreV1 "k8s.io/api/core/v1"
+	rbacV1 "k8s.io/api/rbac/v1"
 )
 
 func TestRoleBindingTemplate(t *testing.T) {
@@ -41,9 +41,9 @@ func TestRoleBindingTemplate(t *testing.T) {
 		{
 			CaseName: "single role binding with basic configuration",
 			Values: map[string]string{
-				"roleBindings.test-binding.roleRefName":          "test-role",
-				"roleBindings.test-binding.subjects[0].kind":    "ServiceAccount",
-				"roleBindings.test-binding.subjects[0].name":    "test-account",
+				"roleBindings.test-binding.roleRefName":           "test-role",
+				"roleBindings.test-binding.subjects[0].kind":      "ServiceAccount",
+				"roleBindings.test-binding.subjects[0].name":      "test-account",
 				"roleBindings.test-binding.subjects[0].namespace": "default",
 			},
 			ExpectedRoleBindings: []struct {
@@ -87,13 +87,13 @@ func TestRoleBindingTemplate(t *testing.T) {
 		{
 			CaseName: "multiple role bindings",
 			Values: map[string]string{
-				"roleBindings.pod-reader-binding.roleRefName":          "pod-reader",
-				"roleBindings.pod-reader-binding.subjects[0].kind":    "ServiceAccount",
-				"roleBindings.pod-reader-binding.subjects[0].name":    "pod-reader-sa",
-				"roleBindings.pod-reader-binding.subjects[0].namespace": "default",
-				"roleBindings.secret-reader-binding.roleRefName":          "secret-reader",
-				"roleBindings.secret-reader-binding.subjects[0].kind":    "ServiceAccount",
-				"roleBindings.secret-reader-binding.subjects[0].name":    "secret-reader-sa",
+				"roleBindings.pod-reader-binding.roleRefName":              "pod-reader",
+				"roleBindings.pod-reader-binding.subjects[0].kind":         "ServiceAccount",
+				"roleBindings.pod-reader-binding.subjects[0].name":         "pod-reader-sa",
+				"roleBindings.pod-reader-binding.subjects[0].namespace":    "default",
+				"roleBindings.secret-reader-binding.roleRefName":           "secret-reader",
+				"roleBindings.secret-reader-binding.subjects[0].kind":      "ServiceAccount",
+				"roleBindings.secret-reader-binding.subjects[0].name":      "secret-reader-sa",
 				"roleBindings.secret-reader-binding.subjects[0].namespace": "default",
 			},
 			ExpectedRoleBindings: []struct {
@@ -138,13 +138,13 @@ func TestRoleBindingTemplate(t *testing.T) {
 		{
 			CaseName: "role binding with multiple subjects",
 			Values: map[string]string{
-				"roleBindings.multi-subject-binding.roleRefName":          "admin-role",
-				"roleBindings.multi-subject-binding.subjects[0].kind":    "ServiceAccount",
-				"roleBindings.multi-subject-binding.subjects[0].name":    "admin-sa",
+				"roleBindings.multi-subject-binding.roleRefName":           "admin-role",
+				"roleBindings.multi-subject-binding.subjects[0].kind":      "ServiceAccount",
+				"roleBindings.multi-subject-binding.subjects[0].name":      "admin-sa",
 				"roleBindings.multi-subject-binding.subjects[0].namespace": "default",
-				"roleBindings.multi-subject-binding.subjects[1].kind":    "User",
-				"roleBindings.multi-subject-binding.subjects[1].name":    "admin-user",
-				"roleBindings.multi-subject-binding.subjects[1].apiGroup": "rbac.authorization.k8s.io",
+				"roleBindings.multi-subject-binding.subjects[1].kind":      "User",
+				"roleBindings.multi-subject-binding.subjects[1].name":      "admin-user",
+				"roleBindings.multi-subject-binding.subjects[1].apiGroup":  "rbac.authorization.k8s.io",
 			},
 			ExpectedRoleBindings: []struct {
 				Name        string
@@ -178,12 +178,12 @@ func TestRoleBindingTemplate(t *testing.T) {
 		{
 			CaseName: "role binding with extra labels",
 			Values: map[string]string{
-				"roleBindings.labeled-binding.roleRefName":          "test-role",
-				"roleBindings.labeled-binding.subjects[0].kind":    "ServiceAccount",
-				"roleBindings.labeled-binding.subjects[0].name":    "test-sa",
+				"roleBindings.labeled-binding.roleRefName":           "test-role",
+				"roleBindings.labeled-binding.subjects[0].kind":      "ServiceAccount",
+				"roleBindings.labeled-binding.subjects[0].name":      "test-sa",
 				"roleBindings.labeled-binding.subjects[0].namespace": "default",
-				"extraLabels.environment":                          "test",
-				"extraLabels.team":                                 "platform",
+				"extraLabels.environment":                            "test",
+				"extraLabels.team":                                   "platform",
 			},
 			ExpectedRoleBindings: []struct {
 				Name        string

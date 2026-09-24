@@ -21,6 +21,7 @@
 | extraLabels                   | Allow labelling resources with custom key/value pairs | `{}` |
 | lifecycle                     | [Container lifecycle hooks](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) | `{}` |
 | podAnnotations                | Pod annotations | `{}`                           |
+| deploymentAnnotations         | Annotations applied to the Deployment object itself (not the pod template). Also applied to worker Deployments, unless a worker sets its own. | `{}` |
 | hostNetwork                   | Use the host's network namespace. | `false`      |
 | dnsPolicy                     | Pod DNS policy  | `{}`                           |
 | dnsConfig                     | [Pod DNS config](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-dns-config)  | `{}` |
@@ -147,3 +148,4 @@
 | worker.image.secrets          |             | `[name: gitlab-registry]`          |
 | worker.livenessProbe | Define a custom `livenessProbe` for the worker. If not specified, uses the top-level `livenessProbe` setting. Setting `worker.livenessProbe.enabled: false` disables the probe altogether for this worker. |  |
 | worker.readinessProbe | Define a custom `readinessProbe` for the worker. If not specified, uses the top-level `readinessProbe` setting. Setting `worker.readinessProbe.enabled: false` disables the probe altogether for this worker. |  |
+| worker.deploymentAnnotations | Annotations applied to the worker Deployment object itself (not the pod template). If not specified, or set to an empty map, uses the top-level `deploymentAnnotations` setting; otherwise replaces it rather than merging with it. |  |
